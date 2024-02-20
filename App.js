@@ -1,6 +1,7 @@
 import {  StyleSheet, Text,  View } from 'react-native';
 import Producto from './Componentes/Producto';
 import Productos from './Componentes/Productos';
+import Clima from './Componentes/Clima';
 
 export default function App() {
   return (
@@ -8,7 +9,6 @@ export default function App() {
       <Encabezado/>
       <Cuerpo/>
       <Pie/>
-    
     </View>
   );
 }
@@ -26,7 +26,7 @@ export const Cuerpo=()=>{
   return(
     <View style={styles.cuerpo}>
       <Text>Hola</Text>
-      <Productos/>
+      <Clima/>
     </View>
   )
 }
