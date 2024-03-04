@@ -1,9 +1,11 @@
 import { View, Text, ActivityIndicator, Image, FlatList, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const Productos = () => {
     const [data,setData]=useState([])
     const [load,setLoad]=useState(false)
+    const nav =useNavigation()
 
     useEffect(()=>{
         fetch('https://fakestoreapi.com/products')
@@ -23,29 +25,30 @@ const Productos = () => {
         )
     }
 
-    const Card=({title,price,image})=>{
+    const Card=({title,price,image,id})=>{
         return(
-            <View>
+            <Pressable onPress={()=>nav.navigate('Producto',{id:id})}>
                 <Text>Producto : {title}</Text>
                 <Text>Precio : ${price} MXN</Text>
                 <Image style={{height:70,width:70}} 
                 source={{uri:image}}/>
-            </View>
+            </Pressable>
         )
 
     }
 
     const LScreen=()=>{
         return(
-            <Pressable>
+            <View>
                 <FlatList
                 data={data}
                 renderItem={({item})=><Card 
                 title={item.title}
                 price={item.price}
-                image={item.image}/>}
+                image={item.image}
+                id={item.id}/>}
                 keyExtractor={item=>item.id}/>
-            </Pressable>
+            </View>
         )
     }
 

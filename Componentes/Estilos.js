@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const estilos=StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#a7d9f3',
+    alignItems:'stretch',
+    justifyContent: 'center',
+  },
     //Estilos del boton
     boton:{
         //backgroundColor:'#5affcc',
