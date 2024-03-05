@@ -1,6 +1,7 @@
 import { View, Text, ActivityIndicator, Image, FlatList, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { estilos } from './Estilos'
 
 const Productos = () => {
     const [data,setData]=useState([])

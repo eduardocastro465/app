@@ -1,12 +1,13 @@
 import {View,Text,Button,TextInput} from 'react-native'
 import { Boton,Caja } from './Atomicos'
 import { useNavigation } from '@react-navigation/native'
+import { estilos } from './Estilos';
 
 
 export const Login=()=>{
   const nav=useNavigation();
     return(
-      <View>
+      <View style={estilos.container}>
         <Text>Username...</Text>
         <TextInput placeholder='Username' autoComplete='off' inputMode='numeric'/>
         <Text>Password...</Text>
