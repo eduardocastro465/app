@@ -11,7 +11,8 @@ export const Login=()=>{
         <TextInput placeholder='Username' autoComplete='off' inputMode='numeric'/>
         <Text>Password...</Text>
         <TextInput placeholder='Password' cursorColor={'red'} keyboardType='numeric' secureTextEntry={true} />
-        <Button title='Login' onPress={()=>nav.navigate('Home')} />{/* permite ir al home */}
+        <Button title='Login' onPress={()=>nav.navigate('Home')} />
+        {/* permite  */}
         <Button title='Cancel'/>
       </View>
     )

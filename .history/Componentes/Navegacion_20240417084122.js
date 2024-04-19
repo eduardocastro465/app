@@ -14,7 +14,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Stack= createNativeStackNavigator();
 const TabsH=createBottomTabNavigator();
 const StackP=createNativeStackNavigator();
-const Drawer=createDrawerNavigator()//las petallas laterales
+const Drawer=createDrawerNavigator()
 
 //navegacion principal (de login a home)
 export const NavHome=()=>{
@@ -29,9 +29,8 @@ export const NavHome=()=>{
 //navegacion secundaria (tabs de home)
 export const NavTabsHome=()=>{
     return(
-        //las opciones que te permiten navegar en las diferentes pestañas en la parte de abajo
         <TabsH.Navigator>
-            <TabsH.Screen name={'Home'} component={Home} options={{headerShown:false,
+            <TabsH.Screen name={'Home4'} component={Home} options={{headerShown:false,
             tabBarIcon:()=>(<FontAwesome name='home' size={30} color={'#321'}/>)}}/>
             <TabsH.Screen name={'Clima'} component={Clima}
             options={{tabBarIcon:()=>(<FontAwesome name='cloud'  size={30} color={'#856'}/>)}}/>
@@ -62,3 +61,5 @@ export const MiDrawer=()=>{
         </Drawer.Navigator>
     )
 }
+
+

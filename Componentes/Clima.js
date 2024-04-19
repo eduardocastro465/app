@@ -10,6 +10,7 @@ const Clima = () => {
         .then(res=>res.json())
         .then(obj=>{
             setData(obj)
+            
             setLoad(true)
         })
         .catch(err=>Alert.alert('Error inesperado : '+err))

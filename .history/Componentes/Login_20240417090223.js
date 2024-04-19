@@ -12,6 +12,7 @@ export const Login=()=>{
         <Text>Password...</Text>
         <TextInput placeholder='Password' cursorColor={'red'} keyboardType='numeric' secureTextEntry={true} />
         <Button title='Login' onPress={()=>nav.navigate('Home')} />{/* permite ir al home */}
+        
         <Button title='Cancel'/>
       </View>
     )

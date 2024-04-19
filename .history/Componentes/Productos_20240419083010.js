@@ -2,7 +2,7 @@ import { View, Text, ActivityIndicator, Image, FlatList, Pressable } from 'react
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-const Productos = () => {
+const productos = () => {
     const [productosMujer, setProductosMujer] = useState([])
     const [load, setLoad] = useState(false)
     const nav = useNavigation()
@@ -22,6 +22,7 @@ const Productos = () => {
             })
             .catch(error => {
                 console.error(error)
+                // Manejo de errores, por ejemplo, mostrar una alerta
             })
     }, [])
 
@@ -68,4 +69,4 @@ const Productos = () => {
     )
 }
 
-export default Productos;
+export default Clima;

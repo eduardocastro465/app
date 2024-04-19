@@ -14,7 +14,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Stack= createNativeStackNavigator();
 const TabsH=createBottomTabNavigator();
 const StackP=createNativeStackNavigator();
-const Drawer=createDrawerNavigator()//las petallas laterales
+const Drawer=createDrawerNavigator()//la 
 
 //navegacion principal (de login a home)
 export const NavHome=()=>{
@@ -62,3 +62,5 @@ export const MiDrawer=()=>{
         </Drawer.Navigator>
     )
 }
+
+

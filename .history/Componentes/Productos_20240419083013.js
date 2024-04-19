@@ -22,6 +22,7 @@ const Productos = () => {
             })
             .catch(error => {
                 console.error(error)
+                // Manejo de errores, por ejemplo, mostrar una alerta
             })
     }, [])
 
@@ -68,4 +69,4 @@ const Productos = () => {
     )
 }
 
-export default Productos;
+export default Clima;

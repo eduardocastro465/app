@@ -62,3 +62,5 @@ export const MiDrawer=()=>{
         </Drawer.Navigator>
     )
 }
+
+

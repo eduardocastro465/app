@@ -1,10 +1,10 @@
 import {  StyleSheet, Text,  View } from 'react-native';
-// import Home from './Componentes/Home';
+import Home from './Componentes/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { NavHome } from './Componentes/Navegacion';
 
 export default function App() {
-  return (  
+  return (
     <NavigationContainer>
       <NavHome/>
     </NavigationContainer>

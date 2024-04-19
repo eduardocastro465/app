@@ -21,6 +21,7 @@ export const NavHome=()=>{
     return(
     <Stack.Navigator initialRouteName='Login'> 
         <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
+        <Stack.Screen name='produc' component={Clima} options={{headerShown:false}}/>
         <Stack.Screen name='Home' component={MiDrawer} options={{headerShown:false}}/>
     </Stack.Navigator>
     )
@@ -62,3 +63,5 @@ export const MiDrawer=()=>{
         </Drawer.Navigator>
     )
 }
+
+
