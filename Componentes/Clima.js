@@ -1,68 +1,71 @@
-import { View, Text, Alert, ActivityIndicator, FlatList, Image } from 'react-native'
+import { View, Text, ActivityIndicator, Image, FlatList, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
-const Clima = () => {
-    const [data,setData]=useState(null)
-    const [load,setLoad]=useState(false)
+const Productos = () => {
+    const [productosMujer, setProductosMujer] = useState([])
+    const [load, setLoad] = useState(false)
+    const nav = useNavigation()
 
-    useEffect(()=>{
-        fetch('https://api.weatherapi.com/v1/forecast.json?key=5a492ff34efa492b91a172441211110%20&q=huejutla&days=10&aqi=no&alerts=no&lang=es')
-        .then(res=>res.json())
-        .then(obj=>{
-            setData(obj)
-            
-            setLoad(true)
-        })
-        .catch(err=>Alert.alert('Error inesperado : '+err))
-    },[])
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudieron obtener los productos.')
+                }
+                return response.json()
+            })
+            .then(data => {
+                const productosMujer = data.filter(producto => producto.category === "women's clothing")
+                setProductosMujer(productosMujer)
+                setLoad(true)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }, [])
 
-    const Card=({fecha,iko,min,max})=>{
-        return(
-            <View style={{flexDirection:'row'}}>
-                <Text>{fecha} </Text>
-                <Image style={{height:50,width:50}}
-                source={{uri:'https:'+iko}}/>
-                <Text> {max}°C </Text>
-                <Text> {min}°C </Text>
+    const Uscreen = () => {
+        return (
+            <View>
+                <ActivityIndicator color={'darkblue'} />
+                <Text>Cargando Datos...</Text>
             </View>
-
         )
     }
 
-    const LScreen=()=>{
-        return(
-            <View>
-                <Text>{data.location.name}</Text>
-                <Text>{data.current.temp_c}°C</Text>
-                <Text>{data.current.condition.text} *
-                max {data.forecast.forecastday[0].day.maxtemp_c} °C 
-                min {data.forecast.forecastday[0].day.mintemp_c} °C </Text>
+    const Card = ({ title, price, image, id }) => {
+        return (
+            <Pressable onPress={() => nav.navigate('Producto', { id: id })}>
+                <Text>Producto : {title}</Text>
+                <Text>Precio : ${price} MXN</Text>
+                <Image style={{ height: 70, width: 70 }}
+                    source={{ uri: image }} />
+            </Pressable>
+        )
 
+    }
+
+    const LScreen = () => {
+        return (
+            <View>
                 <FlatList
-                data={data.forecast.forecastday}
-                renderItem={({item})=><Card fecha={item.date}
-                iko={item.day.condition.icon}
-                max={item.day.maxtemp_c}
-                min={item.day.mintemp_c}/> }/>
+                    data={productosMujer}
+                    renderItem={({ item }) => <Card
+                        title={item.title}
+                        price={item.price}
+                        image={item.image}
+                        id={item.id} />}
+                    keyExtractor={item => item.id} />
             </View>
         )
     }
 
-    const Uscreen=()=>{
-        return(
-            <View>
-                <ActivityIndicator size={'large'} color={'darkblue'}/>
-                <Text>Cargando datos...</Text>
-            </View>
-        )
-    }
-
-  return (
-    <View>
-      <Text>Clima</Text>
-      {load?LScreen():Uscreen()}
-    </View>
-  )
+    return (
+        <View>
+            {load ? LScreen() : Uscreen()}
+        </View>
+    )
 }
 
-export default Clima
+export default Productos;
